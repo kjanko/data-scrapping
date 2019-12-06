@@ -5,7 +5,7 @@ import schedule
 
 from pipelines.operations import AirportDataScrapper, LocationTemperatureScrapper, CacheSaver, \
     PostProcessingInitializer
-from pipelines.pipeline import Pipeline, OperationState
+from pipelines.pipeline import Pipeline
 from services import OpenWeatherMapFetchingService
 
 if __name__ == '__main__':
@@ -19,9 +19,8 @@ if __name__ == '__main__':
     pipeline.add_op(PostProcessingInitializer("http://localhost:5000/v1/processing/post"))
 
     logging.debug("Scheduling jobs...")
-    #schedule.every().hour.do(pipeline.execute)
-    pipeline.execute()
+    schedule.every().hour.do(pipeline.execute)
 
-    #while True:
-    #    schedule.run_pending()
-    #    time.sleep(1)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
