@@ -2,7 +2,7 @@ import logging
 
 from models import database
 from models.entities import Flight, Note
-from web.controllers import app_factory
+from web import app_factory
 
 
 def create_tables():
