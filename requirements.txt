@@ -1,0 +1,9 @@
+bs4
+requests
+selenium
+peewee
+schedule
+cachetools
+psutil
+flask
+redis
